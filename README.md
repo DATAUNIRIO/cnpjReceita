@@ -42,3 +42,4 @@ Se quiser todos
 ## Agradecimentos
 
 Turminha da página [decryptr](https://github.com/decryptr).
+
