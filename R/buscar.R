@@ -20,12 +20,12 @@ buscar_cnpj <- function(cnpj, output = 'both', dir = '.') {
     })
     Sys.sleep(1)
   }
-  if (output %in% c('both', 'html')) {
+  if (output %in% c('both', 'df')) {
     txt <- readr::read_file(arq_html, locale = readr::locale(encoding = 'latin1'))
     d <- scrape_cnpj(txt)
+    if(output == 'df') file.remove(arq_html)
     return(d)
   }
-  if (output == 'df') file.remove(arq_html)
   return(invisible(TRUE))
 }
 
