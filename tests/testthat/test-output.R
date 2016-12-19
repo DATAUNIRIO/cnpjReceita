@@ -9,6 +9,7 @@ has_conn <- function() {
 }
 
 if (has_conn()) {
+
   test_that("downloads html when output is html", {
     r <- buscar_cnpj(cnpj, output = 'html')
     f <- paste0(cnpj, '.html')
@@ -32,6 +33,7 @@ if (has_conn()) {
     expect_is(r, 'tbl_df')
     if (file.exists(f)) file.remove(f)
   })
+
 }
 
 

@@ -51,6 +51,7 @@ check_cnpj <- function(cnpj) {
 }
 
 baixar_um <- function(cnpj, dir, arq_html) {
+  to <- httr::timeout(3)
   u_consulta <- u_receita(cnpj)
   httr::handle_reset(u_consulta)
   if (!dir.exists(dir)) dir.create(dir, recursive = TRUE)
@@ -62,22 +63,22 @@ baixar_um <- function(cnpj, dir, arq_html) {
   arq <- tempfile(pattern = data_hora, tmpdir = dir)
   wd_aud <- httr::write_disk(paste0(arq, ".wav"), overwrite = TRUE)
   wd_img <- httr::write_disk(paste0(arq, ".png"), overwrite = TRUE)
-  imagem <- httr::GET(url_gera_captcha, wd_img)
-  audio <- httr::GET(url_audio, wd_aud)
+  imagem <- httr::GET(url_gera_captcha, wd_img, to)
+  audio <- httr::GET(url_audio, wd_aud, to)
   while (as.numeric(audio$headers[["content-length"]]) < 1) {
     sl <- 3
     msg <- sprintf("Aconteceu algum problema. Tentando novamente em %d segundos...", sl)
     message(msg)
     Sys.sleep(sl)
-    imagem <- httr::GET(url_gera_captcha, wd_img)
-    audio <- httr::GET(url_audio, wd_aud)
+    imagem <- httr::GET(url_gera_captcha, wd_img, to)
+    audio <- httr::GET(url_audio, wd_aud, to)
   }
   captcha <- captchaReceitaAudio::predizer(paste0(arq, ".wav"))
   file.remove(paste0(arq, ".wav"))
   file.remove(paste0(arq, ".png"))
   dados <- form_data(cnpj, captcha)
   u_valid <- u_validacao()
-  httr::POST(u_valid, body = dados,
+  httr::POST(u_valid, body = dados, to,
              httr::set_cookies("flag" = '1', .cookies = unlist(httr::cookies(solicitacao))),
              encode = 'form', httr::write_disk(arq_html, overwrite = TRUE))
 }
