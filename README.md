@@ -1,5 +1,7 @@
 [![Travis-CI Build Status](https://travis-ci.org/jtrecenti/cnpjReceita.svg?branch=master)](https://travis-ci.org/jtrecenti/cnpjReceita)
 
+[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/jtrecenti/cnpjReceita?branch=master&svg=true)](https://ci.appveyor.com/project/jtrecenti/cnpjReceita)
+
 # cnpjReceita
 
 Webscraper que realiza consulta de CNPJ na Receita Federal.
