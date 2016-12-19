@@ -33,7 +33,7 @@ d_result <- buscar_cnpj(cnpj, type = 'df')
 d_result
 ```
 
-Se quiser todos
+Se quiser retornar o `data.frame` e salvar o HTML, , use `output='both'`.
 
 ## TODO
 
