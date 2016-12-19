@@ -5,7 +5,7 @@ cnpj <- '00000000000191'
 has_conn <- function() {
   u_check <- 'http://www.receita.fazenda.gov.br/PessoaJuridica/CNPJ/cnpjreva/Cnpjreva_Solicitacao2.asp'
   r <- try({httr::GET(u_check, httr::timeout(3))}, silent = TRUE)
-  !is.null(r) && (r[['status_code']] == 200)
+  !is.null(r[['status_code']]) && (r[['status_code']] == 200)
 }
 
 if (has_conn()) {
