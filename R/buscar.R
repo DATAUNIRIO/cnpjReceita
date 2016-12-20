@@ -73,8 +73,8 @@ baixar_um <- function(cnpj, dir, arq_html) {
     imagem <- httr::GET(url_gera_captcha, wd_img, to)
     audio <- httr::GET(url_audio, wd_aud, to)
   }
-  captcha <- captchaReceitaAudio::predizer(paste0(arq, ".wav"))
 
+  captcha <- captchaReceitaAudio::predizer(paste0(arq, ".wav"))
   file.remove(paste0(arq, ".wav"))
   file.remove(paste0(arq, ".png"))
   dados <- form_data(cnpj, captcha)
