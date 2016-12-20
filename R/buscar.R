@@ -12,7 +12,7 @@ buscar_cnpj <- function(cnpj, output = 'both', dir = '.') {
   cnpj <- check_cnpj(cnpj)
   arq_html <- sprintf('%s/%s.html', dir, cnpj)
   tentativas <- 0
-  while (!file.exists(arq_html) || (file.size(arq_html) == 8391 && tentativas < 10)) {
+  while ((!file.exists(arq_html) || file.size(arq_html) == 8391) && tentativas < 10) {
     tentativas <- tentativas + 1
     if (tentativas > 1) cat(sprintf('Tentativa %02d...\n', tentativas))
     try({
