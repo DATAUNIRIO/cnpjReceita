@@ -4,7 +4,7 @@
 \alias{buscar_cnpj}
 \title{Busca um CNPJ no site da Receita Federal}
 \usage{
-buscar_cnpj(cnpj, output = "both", dir = ".")
+buscar_cnpj(cnpj, output = "both", dir = ".", qsa = FALSE)
 }
 \arguments{
 \item{cnpj}{número do CNPJ, com ou sem os caracteres especiais.}
@@ -12,9 +12,14 @@ buscar_cnpj(cnpj, output = "both", dir = ".")
 \item{output}{tipo de output: "df" retorna uma \code{tibble}, "html" salva um arquivo HTML, "both" retorna a \code{tibble} e salva um aquivo HTML.}
 
 \item{dir}{pasta onde o arquivo html será salvo. Default diretório atual.}
+
+\item{qsa}{logical indicando se deseja baixar o QSA ou não. Default \code{FALSE}.}
 }
 \value{
 Se \code{output} for "df" ou "both", retorna uma \code{tibble} com resultados após scraping.
+  Se \code{qsa} for TRUE, retorna uma lista com três \code{tibble}s: \code{dados_cnpj} com as informações da página principal,
+  \code{infos_basicas} com as informações básicas da empresa na página do QSA e
+  \code{qsa} informações do quadro social.
 }
 \description{
 Realiza uma busca de um CNPJ na Receita Federal e salva resultados em arquivo.
