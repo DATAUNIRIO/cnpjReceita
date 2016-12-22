@@ -19,6 +19,7 @@ Imports: xml2,
     captchaReceitaAudio,
     lubridate,
     tibble,
-    purrr
+    purrr,
+    dplyr
 Suggests: testthat,
     curl
