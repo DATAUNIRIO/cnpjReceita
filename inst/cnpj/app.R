@@ -33,6 +33,9 @@ server <- function(input, output) {
   })
 
   result <- reactive({
+    validate(
+      need(has_conn(), "Site da Receita fora do ar ou IP bloqueado.")
+    )
     cnpj <- check()
     if (cnpj != '') {
       buscar_cnpj(cnpj)
