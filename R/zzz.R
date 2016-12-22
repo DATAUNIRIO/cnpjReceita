@@ -1,3 +1,5 @@
+globalVariables(c('nm', 'qualif', 'key'))
+
 #' Pipe operator
 #'
 #' See \code{\link[magrittr]{\%>\%}} for more details.
