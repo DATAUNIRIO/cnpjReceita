@@ -33,7 +33,22 @@ d_result <- buscar_cnpj(cnpj, output = 'df')
 d_result
 ```
 
-Se quiser retornar o `data.frame` e salvar o HTML, , use `output='both'`.
+Se quiser retornar o `data.frame` e salvar o HTML, use `output='both'`.
+
+## QSA
+
+Se quiser baixar também o QSA, use a opção `qsa = TRUE`
+
+```r
+d_result <- buscar_cnpj(cnpj, output = 'df', qsa = TRUE)
+d_result
+```
+
+Note que nesse caso, o resultado é uma lista com três `tibble`s: 
+
+- `dados_cnpj` com as informações da página principal (mesma `tibble` retornada quando `qsa = FALSE`);
+- `infos_basicas` com as informações básicas da empresa na página do QSA; e
+- `qsa` informações do quadro social.
 
 ## TODO
 
@@ -45,3 +60,6 @@ Se quiser retornar o `data.frame` e salvar o HTML, , use `output='both'`.
 
 Turminha da página [decryptr](https://github.com/decryptr).
 
+## License
+
+MIT
