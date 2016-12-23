@@ -2,4 +2,5 @@
 
 export("%>%")
 export(buscar_cnpj)
+export(has_conn)
 importFrom(magrittr,"%>%")
